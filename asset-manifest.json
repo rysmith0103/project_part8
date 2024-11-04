@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/project_part8/static/css/main.49ff332d.css",
+    "main.js": "/project_part8/static/js/main.1c96762f.js",
+    "static/media/lawnMaintenance.jpg": "/project_part8/static/media/lawnMaintenance.8d0463edb2122317d280.jpg",
+    "static/media/mulch.jpg": "/project_part8/static/media/mulch.5bb8fe24acff0cc54451.jpg",
+    "static/media/springCleanup.jpg": "/project_part8/static/media/springCleanup.cebd847cd9bf2225fb8a.jpg",
+    "static/media/contactus.jpg": "/project_part8/static/media/contactus.4420d75b5fc8d1e4f033.jpg",
+    "static/media/river.jpg": "/project_part8/static/media/river.721b137fc4e638b32e50.jpg",
+    "static/media/grassmowing.jpg": "/project_part8/static/media/grassmowing.5b5fce29b994e9f5408c.jpg",
+    "static/media/T&CSign.jpg": "/project_part8/static/media/T&CSign.6e2afb5e1c59b7d5285b.jpg",
+    "static/media/lawn.jpeg": "/project_part8/static/media/lawn.5937f835bf611e77aec6.jpeg",
+    "static/media/hardscape2.jpg": "/project_part8/static/media/hardscape2.51a2d930d9a0fcf46369.jpg",
+    "static/media/landscape.jpg": "/project_part8/static/media/landscape.f89ead37a5f86fcd14b6.jpg",
+    "static/media/T&CLogo.jpg": "/project_part8/static/media/T&CLogo.cc3885a0d7923c4470d5.jpg",
+    "index.html": "/project_part8/index.html",
+    "main.49ff332d.css.map": "/project_part8/static/css/main.49ff332d.css.map",
+    "main.1c96762f.js.map": "/project_part8/static/js/main.1c96762f.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.49ff332d.css",
+    "static/js/main.1c96762f.js"
+  ]
+}
