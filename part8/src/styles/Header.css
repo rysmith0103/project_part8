@@ -1,0 +1,183 @@
+/* Color Variables */ 
+:root {
+    --header-background: #F5F5DC;
+    --white: #ffff;
+    --logo-green: #003200;
+    --black: #000000;
+    --hover-color: #FFD700;
+  }
+/* Structure */ 
+body{
+    padding: 0;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+/* Logo and nav bar */ 
+#main-header {
+    background-color: var(--logo-green); 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    color: var(--white);
+}
+#logo-nav-box {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+}
+.logo img {
+    width: 150px; 
+}
+#main-nav-container {
+    text-align: center;
+}
+.hamburger-menu {
+    display: none;
+}
+#main-nav ul {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 20px;
+}
+#main-nav li{
+    list-style: none;
+    font-weight: bold;
+}
+#main-nav a {
+    text-decoration: none;
+    color: var(--white);
+    font-size: 16px;
+    padding: 10px;
+    transition: color 0.3s ease;
+}
+#main-nav a:hover {
+    color: var(--hover-color);
+}
+
+/* Dropdown styling */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    display: none; 
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--logo-green); 
+    border-radius: 4px;
+    min-width: 150px;
+    z-index: 1000;
+    padding: 0;
+    margin: 0;
+    flex-direction: column;
+}
+
+.dropdown:hover .dropdown-menu,
+.dropdown:focus-within .dropdown-menu {
+    display: flex; 
+}
+
+.dropdown-menu li {
+    list-style: none;
+}
+
+.dropdown-menu li a {
+    display: block;
+    padding: 10px;
+    color: var(--white); 
+    text-decoration: none;
+    font-size: 14px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2); 
+}
+
+.dropdown-menu li a:hover {
+    background-color: rgba(255, 255, 255, 0.1); 
+}
+
+.dropdown-menu li:last-child a {
+    border-bottom: none; 
+}
+
+
+/* Active Page Styling */
+#main-nav a.active {
+    color: var(--hover-color);
+    font-weight: bold;
+}
+/* Contact Us Button */
+.contact-us-btn {
+    background-color: transparent;
+    border: 2px solid var(--white);
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+.contact-us-btn:hover {
+    background-color: var(--white);
+    color: var(--logo-green) !important;
+    font-weight: bold;
+}
+
+/* For small screens */ 
+@media (max-width: 900px) {
+
+    /* Header adjustments */
+    #main-header {
+        flex-direction: column; 
+        padding: 10px;
+        align-items: flex-start;
+    }   
+    .logo img {
+        width: 120px; 
+    }
+
+    /* Update the navigation menu for small screens */
+
+    #logo-nav-box{
+        display: flex;
+        flex-direction: column;
+    }
+    #main-nav ul {
+        flex-direction: column;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    #main-nav li {
+        width: 100%;
+        text-align: center;
+        padding: 15px 0;
+        border-bottom: 1px solid var(--white); 
+    }
+
+    #main-nav a {
+        width: 100%;
+        color: var(--white);
+        text-decoration: none;
+        font-size: 18px;
+        padding: 15px 0;
+        display: block;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    #main-nav a:hover {
+        background-color: var(--hover-color);
+        color: var(--black);
+    }
+
+    /* make Contact Us Button in the Nav is stand out */
+    .contact-us-btn {
+        background-color: var(--hover-color);
+        color: var(--black);
+        padding: 10px;
+        border-radius: 5px;
+        margin: 10px 0;
+        text-align: center;
+    }
+}

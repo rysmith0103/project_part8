@@ -1,0 +1,106 @@
+/* Services Section */
+.section-title {
+    text-align: center;
+    font-size: 2.5em;
+    margin: 40px 0 20px;
+    color: var(--logo-green);
+}
+
+/* Services Section */
+.services, .additional-services, .cta {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.service-cards {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.service-card {
+    background: var(--white);
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.service-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.service-card h3 {
+    color: var(--logo-green);
+    margin-top: 10px;
+}
+
+.service-card p {
+    padding: 10px 15px;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Additional Services */
+.additional-services-content {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.additional-service {
+    flex: 1;
+    padding: 15px;
+    background: var(--white);
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.additional-service h3 {
+    color: var(--logo-green);
+}
+
+.additional-service p {
+    margin-top: 10px;
+}
+
+/* Call to Action */
+.cta {
+    background: var(--logo-green);
+    color: var(--white);
+    padding: 40px 20px;
+    border-radius: 8px;
+   
+}
+
+.cta-button {
+    background:  var(--white);
+    color: var(--black);
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 1.2em;
+    transition: background 0.3s ease-in-out;
+}
+
+.cta-button:hover {
+    background: var(--hover-color);
+}
+
+
+/* smaller screens */ 
+
+@media (max-width: 900px) {
+    .service-box {
+        width: 100%;
+    }
+}
