@@ -1,6 +1,8 @@
 import "../styles/About.css";
 import riverIMG from "../images/river.jpg";
 import signIMG from "../images/T&CSign.jpg";
+import WhyChooseData from "../components/WhyChooseData";
+import WhyChooseUs from "../components/WhyChooseUs";
 
 
 const About = () => {
@@ -47,36 +49,14 @@ const About = () => {
             <section className="why-choose-us">
                 <h2 className="section-title">Why <span className="highlight">Choose Us?</span></h2>
                 <div className="features">
-                    <div className="feature-box">
-                        <span className="icon">🌿</span>
-                        <h3>Specialized Company</h3>
-                        <p>We focus on providing top-quality residential and commercial landscaping services.</p>
-                    </div>
-                    <div className="feature-box">
-                        <span className="icon">✅</span>
-                        <h3>Licensed & Insured</h3>
-                        <p>Our team is fully licensed, bonded, and insured, ensuring safety and professionalism.</p>
-                    </div>
-                    <div className="feature-box">
-                        <span className="icon">🛠️</span>
-                        <h3>Dependable Services</h3>
-                        <p>We take great pride in delivering every project on time and within budget.</p>
-                    </div>
-                    <div className="feature-box">
-                        <span className="icon">📅</span>
-                        <h3>Day Scheduling</h3>
-                        <p>We offer consistent scheduling, visiting your property on the same day and time each week.</p>
-                    </div>
-                    <div className="feature-box">
-                        <span className="icon">💬</span>
-                        <h3>Free Consultations</h3>
-                        <p>We provide free consultations and accurate quotes to help you plan your landscaping needs.</p>
-                    </div>
-                    <div className="feature-box">
-                        <span className="icon">🏆</span>
-                        <h3>Reputable Company</h3>
-                        <p>With over 45 years of experience, we are known for our quality service and exceptional results.</p>
-                    </div>
+                   {WhyChooseData.map((reason, index) => (
+                        <WhyChooseUs
+                            key={index}
+                            icon={reason.icon}
+                            title={reason.title}
+                            description={reason.description}
+                        />
+                   ))}
                 </div>
             </section>
         </main>

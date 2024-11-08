@@ -1,11 +1,21 @@
 import "../styles/Home.css";
+import Slideshow from "../components/Slideshow";
 import mower from "../images/grassmowing.jpg";
+import slide1 from "../images/slideshow/ss1.jpg";
+import slide2 from "../images/slideshow/ss2.jpg";
+import slide3 from "../images/slideshow/ss3.jpg";
+import slide4 from "../images/slideshow/ss4.jpg";
+
+
 
 const Home = () => {
+
+    const slideshowImages = [slide1, slide2, slide3, slide4];
+
     return (
         <main id="main-content">
             <div className="slideshow-container">
-                <h1>***INSERT SLIDESHOW HERE***</h1>
+                <Slideshow images={slideshowImages} />
             </div>
 
             <section className="design-section">

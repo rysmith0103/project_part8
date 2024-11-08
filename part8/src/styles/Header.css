@@ -138,6 +138,29 @@ body{
 
     /* Update the navigation menu for small screens */
 
+
+    #main-nav ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Show nav links when the menu is open */
+    #main-nav.open ul {
+        display: flex;
+    }
+
+    /* Hamburger icon styling */
+    .hamburger-menu {
+        display: block;
+        font-size: 24px;
+        cursor: pointer;
+        color: var(--white);
+        margin-left: auto;
+    }
+    
     #logo-nav-box{
         display: flex;
         flex-direction: column;
