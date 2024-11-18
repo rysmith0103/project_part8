@@ -2,9 +2,11 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import FAQItem from "../components/FAQItem";
 import "../styles/Blog.css";
+import AddDialog from "../components/add-dialog";
 
 const Blog = () => {
   const [faqs, setFaqs] = useState([]);
+  const [showAddDialog, setShowAddDialog] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -17,9 +19,24 @@ const Blog = () => {
     })();
   }, []);
 
+  const addBlogPost = (blogPost) => {
+    setFaqs((blogPosts) => [...blogPosts, blogPost]);
+  };
+
+  const openAddDialog = () => {
+    setShowAddDialog(true);
+  };
+
+  const closeAddDialog = () => {
+    setShowAddDialog(false);
+  };
+
   return (
     <div>
       <h1>Frequently Asked Questions</h1>
+      <button id="add-blog" onClick={openAddDialog}>Create a Post</button>
+
+      {showAddDialog ? (<AddDialog closeDialog={closeAddDialog} addBlogPost={addBlogPost}/>) : ("")}
       {faqs.map((faq) => (
         <FAQItem
           key={faq._id}
