@@ -9,10 +9,16 @@ const AddDialog = (props) => {
     const onSubmit = async (event) => {
         event.preventDefault();
         setResult("Sending...");
-        
+      
         const formData = new FormData(event.target);
+      
+        // Ensure related_services is always present
+        if (!formData.get("related_services")) {
+          formData.set("related_services", ""); // Default to an empty string
+        }
+      
         for (let [key, value] of formData.entries()) {
-          console.log(`${key}: ${value}`); // Log form data
+          console.log(`${key}:`, value); // Debugging: Log form data
         }
       
         try {
@@ -59,7 +65,7 @@ const AddDialog = (props) => {
           <span id="dialog-close" className="w3-button w3-display-topright" onClick={props.closeDialog}>
             &times;
           </span>
-            <form id="add-blog-form" onSubmit={onSubmit}>
+            <form id="add-blog-form" onSubmit={onSubmit} encType="multipart/form-data">
                 <p>
                     <label htmlFor="question">Blog Title:</label>
                     <input
@@ -101,6 +107,7 @@ const AddDialog = (props) => {
                     name="related_services"
                     value={inputs.related_services || ""}
                     onChange={handleChange}
+                    required
                     />
                 </p>
                 <section className="columns">
