@@ -22,7 +22,7 @@ const AddDialog = (props) => {
         }
       
         try {
-          const response = await fetch("http://localhost:3002/api/faqs", {
+          const response = await fetch("https://project-backend-dzh5.onrender.com/api/faqs/", {
             method: "POST",
             body: formData,
           });
