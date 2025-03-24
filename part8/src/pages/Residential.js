@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 const ResidentialServices = () => {
     const serviceCardsRef = useRef([]);
     const additionalServicesRef = useRef([]);
+    const servicesRef = useRef(null);
 
     useEffect(() => {
         const observer = new IntersectionObserver((entries) => {
@@ -24,6 +25,11 @@ const ResidentialServices = () => {
             rootMargin: '50px'
         });
 
+        // Observe services section
+        if (servicesRef.current) {
+            observer.observe(servicesRef.current);
+        }
+
         // Observe service cards
         serviceCardsRef.current.forEach(card => {
             if (card) observer.observe(card);
@@ -35,6 +41,9 @@ const ResidentialServices = () => {
         });
 
         return () => {
+            if (servicesRef.current) {
+                observer.unobserve(servicesRef.current);
+            }
             serviceCardsRef.current.forEach(card => {
                 if (card) observer.unobserve(card);
             });
@@ -47,9 +56,11 @@ const ResidentialServices = () => {
     return (
         <div className="residential-page">
             <Header />
-            <section className="services">
-                <h1 className="section-title">Residential Services</h1>
-                <p>Professional lawn care and landscaping services designed for homeowners. We help you create and maintain a beautiful outdoor space that enhances your home's curb appeal and value.</p>
+            <section className="services" ref={servicesRef}>
+                <div className="services-content">
+                    <h1 className="section-title">Residential Services</h1>
+                    <p>Expert landscaping and maintenance services for your home. We create and maintain beautiful outdoor spaces that enhance your property's value and your quality of life.</p>
+                </div>
             </section>
 
             <section className="service-cards">

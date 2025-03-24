@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 const CommercialServices = () => {
     const serviceCardsRef = useRef([]);
     const additionalServicesRef = useRef([]);
+    const servicesRef = useRef(null);
 
     useEffect(() => {
         const observer = new IntersectionObserver((entries) => {
@@ -24,6 +25,11 @@ const CommercialServices = () => {
             rootMargin: '50px'
         });
 
+        // Observe services section
+        if (servicesRef.current) {
+            observer.observe(servicesRef.current);
+        }
+
         // Observe service cards
         serviceCardsRef.current.forEach(card => {
             if (card) observer.observe(card);
@@ -35,6 +41,9 @@ const CommercialServices = () => {
         });
 
         return () => {
+            if (servicesRef.current) {
+                observer.unobserve(servicesRef.current);
+            }
             serviceCardsRef.current.forEach(card => {
                 if (card) observer.unobserve(card);
             });
@@ -47,9 +56,11 @@ const CommercialServices = () => {
     return (
         <div className="commercial-page">
             <Header />
-            <section className="services">
-                <h1 className="section-title">Commercial Services</h1>
-                <p>Professional landscape and maintenance services tailored for commercial properties. We help businesses maintain beautiful, well-maintained outdoor spaces that enhance their property value and create a positive first impression.</p>
+            <section className="services" ref={servicesRef}>
+                <div className="services-content">
+                    <h1 className="section-title">Commercial Services</h1>
+                    <p>Professional landscape and maintenance services tailored for commercial properties. We help businesses maintain beautiful, well-maintained outdoor spaces that enhance their property value and create a positive first impression.</p>
+                </div>
             </section>
 
             <section className="service-cards">

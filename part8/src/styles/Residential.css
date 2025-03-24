@@ -21,31 +21,55 @@
 
 /* Services Section */
 .services {
-    padding: 80px 20px;
+    padding: 20px;
     text-align: center;
     position: relative;
     z-index: 1;
-    background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url('../images/lawnMaintenance.jpg');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    color: var(--logo-green);
+    display: flex;
+    justify-content: center;
+}
+
+.services-content {
+    background: var(--logo-green);
+    padding: 25px 35px;
+    border-radius: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    width: fit-content;
+    max-width: 800px;
+    position: relative;
+    overflow: hidden;
 }
 
 .section-title {
-    font-size: 3.5em;
-    margin-bottom: 20px;
-    color: var(--logo-green);
-    text-shadow: none;
+    font-size: 2.5em;
+    margin-bottom: 15px;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    font-weight: 600;
+    position: relative;
+    display: inline-block;
+    z-index: 2;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: white;
 }
 
 .services p {
     font-size: 1.2em;
-    max-width: 800px;
-    margin: 0 auto 40px;
-    line-height: 1.6;
-    color: var(--grey);
-    text-shadow: none;
+    margin: 0;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 2;
 }
 
 /* Service Cards Section */
@@ -286,11 +310,15 @@
 /* Responsive Design */
 @media (max-width: 900px) {
     .services {
-        padding: 100px 20px 40px;
+        padding: 15px;
+    }
+
+    .services-content {
+        padding: 20px 30px;
     }
 
     .section-title {
-        font-size: 2.5em;
+        font-size: 2.2em;
     }
 
     .service-cards {
@@ -318,5 +346,28 @@
 
     .cta-button {
         padding: 15px 35px;
+    }
+}
+
+@media (max-width: 480px) {
+    .services {
+        padding: 10px;
+    }
+
+    .services-content {
+        padding: 15px 25px;
+        border-radius: 20px;
+    }
+
+    .section-title {
+        font-size: 2em;
+    }
+
+    .section-title::after {
+        width: 60px;
+    }
+
+    .services p {
+        font-size: 1em;
     }
 } 

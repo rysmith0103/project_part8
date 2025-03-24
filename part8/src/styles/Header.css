@@ -239,6 +239,8 @@ body{
         flex-direction: column;
         gap: 1.5rem;
         align-items: center;
+        text-align: center;
+        width: 100%;
         opacity: 0;
         transform: translateX(20px);
         transition: all 0.3s ease;
@@ -249,18 +251,24 @@ body{
         transform: translateX(0);
     }
 
+    #main-nav ul li {
+        width: 100%;
+        text-align: center;
+    }
+
     #main-nav a {
         display: block;
         padding: 1rem 0;
         font-size: 1.2em;
         text-align: center;
-        width: 100%;
     }
 
     .contact-us-btn {
-        margin-top: 1rem;
-        width: 80%;
+        display: inline-block;
+        margin: 1rem auto;
         text-align: center;
+        width: fit-content;
+        padding: 0.75rem 2rem !important;
     }
 
     .logo img {

@@ -7,7 +7,6 @@ import Residential from "./pages/Residential";
 import Commercial from "./pages/Commercial";
 import Contact from "./pages/Contact";
 
-
 export default function App() {
   return (
     <BrowserRouter basename={process.env.PUBLIC_URL}>
