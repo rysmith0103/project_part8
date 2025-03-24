@@ -1,7 +1,6 @@
 [build]
-  base = "part8"
+  command = "CI= npm run build"
   publish = "build"
-  command = "npm run build"
 
 [[redirects]]
   from = "/*"
