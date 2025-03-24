@@ -1,46 +1,98 @@
-import { Link } from "react-router-dom";
-import "../styles/Commercial.css";
+import React, { useEffect, useRef } from 'react';
+import '../styles/Commercial.css';
+import Header from '../components/Header';
 import ServiceCard from "../components/ServiceCard";
-import AdditionalService from "../components/AdditionalServiceCard";
-import { MainServicesData, additionalServicesData } from "../components/ServicesData";
+import AdditionalService from "../components/AdditionalService";
+import { CommercialMainServicesData, CommercialAdditionalServicesData } from "../data/servicesData";
+import { Link } from "react-router-dom";
 
-const Commercial = () => {
+const CommercialServices = () => {
+    const serviceCardsRef = useRef([]);
+    const additionalServicesRef = useRef([]);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                } else {
+                    entry.target.classList.remove('visible');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '50px'
+        });
+
+        // Observe service cards
+        serviceCardsRef.current.forEach(card => {
+            if (card) observer.observe(card);
+        });
+
+        // Observe additional services
+        additionalServicesRef.current.forEach(service => {
+            if (service) observer.observe(service);
+        });
+
+        return () => {
+            serviceCardsRef.current.forEach(card => {
+                if (card) observer.unobserve(card);
+            });
+            additionalServicesRef.current.forEach(service => {
+                if (service) observer.unobserve(service);
+            });
+        };
+    }, []);
+
     return (
-        <main id="main-content">
+        <div className="commercial-page">
+            <Header />
             <section className="services">
-                <h2 className="section-title">Our Commercial Services</h2>
-                <div className="service-cards">
-                    {MainServicesData.map((service, index) => (
+                <h1 className="section-title">Commercial Services</h1>
+                <p>Professional landscape and maintenance services tailored for commercial properties. We help businesses maintain beautiful, well-maintained outdoor spaces that enhance their property value and create a positive first impression.</p>
+            </section>
+
+            <section className="service-cards">
+                {CommercialMainServicesData.map((service, index) => (
+                    <div 
+                        key={index}
+                        ref={el => serviceCardsRef.current[index] = el}
+                        className="service-card-wrapper"
+                    >
                         <ServiceCard
-                            key={index}
                             image={service.image}
                             alt={service.alt}
                             title={service.title}
                             description={service.description}
                         />
-                    ))}
-                </div>
+                    </div>
+                ))}
             </section>
 
             <section className="additional-services">
                 <h2 className="section-title">Additional Services</h2>
                 <div className="additional-services-content">
-                    {additionalServicesData.map((service, index) => (
-                        <AdditionalService
-                            key = {index}
-                            title = {service.title}
-                            description = {service.description}
-                        />
+                    {CommercialAdditionalServicesData.map((service, index) => (
+                        <div 
+                            key={index}
+                            ref={el => additionalServicesRef.current[index] = el}
+                            className="additional-service-wrapper"
+                        >
+                            <AdditionalService
+                                title={service.title}
+                                description={service.description}
+                            />
+                        </div>
                     ))}
                 </div>
             </section>
 
             <section className="cta">
-                <h2>Want to Make a Lasting Impression?</h2>
-                <Link to="/contact" className="cta-button">Request a Free Quote</Link>
+                <h2>Ready to Transform Your Commercial Property?</h2>
+                <Link to="/contact" className="cta-button">Get a Free Quote</Link>
             </section>
-        </main>
+        </div>
     );
 };
 
-export default Commercial;
+export default CommercialServices;

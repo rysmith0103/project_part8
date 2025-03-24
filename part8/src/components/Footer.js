@@ -19,16 +19,16 @@ function Footer() {
                     <div className="footer-column">
                         <h3>Services</h3>
                         <ul>
-                            <li><NavLink to="/Services">Residential</NavLink></li>
-                            <li><NavLink to="/Services">Commercial</NavLink></li>
+                            <li><NavLink to="/Residential">Residential Services</NavLink></li>
+                            <li><NavLink to="/Commercial">Commercial Services</NavLink></li>
                         </ul>
                     </div>
                     <div className="footer-column">
                         <h3>Contact Us</h3>
                         <ul>
-                            <li><a href="#">495 Mountain View Road</a></li>
-                            <li><a href="#">(444)-444-4444</a></li>
-                            <li><a href="#">Mon-Fri 7:00am - 5:00pm</a></li>
+                            <li><a href="https://maps.google.com/?q=495+Mountain+View+Road" target="_blank" rel="noopener noreferrer">495 Mountain View Road</a></li>
+                            <li><a href="tel:444-444-4444">(444)-444-4444</a></li>
+                            <li>Mon-Fri 7:00am - 5:00pm</li>
                         </ul>
                     </div>
                 </div>

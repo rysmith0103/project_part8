@@ -14,47 +14,129 @@ body{
 }
 /* Logo and nav bar */ 
 #main-header {
-    background-color: var(--logo-green); 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    color: var(--white);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    transition: all 0.3s ease;
 }
+
+#main-header.scrolled {
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+}
+
 #logo-nav-box {
     display: flex;
     justify-content: space-between;
-    width: 100%;
     align-items: center;
+    padding: 1rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
+
 .logo img {
-    width: 150px; 
+    height: 60px;
+    transition: transform 0.3s ease;
 }
-#main-nav-container {
-    text-align: center;
+
+.logo img:hover {
+    transform: scale(1.05);
 }
+
+/* Hamburger Menu */
 .hamburger-menu {
     display: none;
+    width: 30px;
+    height: 24px;
+    position: relative;
+    cursor: pointer;
+    z-index: 1002;
+    transition: all 0.3s ease;
 }
+
+.hamburger-menu span {
+    display: block;
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    background: var(--logo-green);
+    border-radius: 3px;
+    opacity: 1;
+    left: 0;
+    transform: rotate(0deg);
+    transition: all 0.3s ease;
+}
+
+.hamburger-menu span:nth-child(1) {
+    top: 0px;
+}
+
+.hamburger-menu span:nth-child(2) {
+    top: 10px;
+}
+
+.hamburger-menu span:nth-child(3) {
+    top: 20px;
+}
+
+/* Hamburger Menu Animation */
+.hamburger-menu.open span:nth-child(1) {
+    top: 10px;
+    transform: rotate(135deg);
+}
+
+.hamburger-menu.open span:nth-child(2) {
+    opacity: 0;
+    transform: translateX(-20px);
+}
+
+.hamburger-menu.open span:nth-child(3) {
+    top: 10px;
+    transform: rotate(-135deg);
+}
+
+/* Navigation Menu */
+#main-nav-container {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
 #main-nav ul {
     display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    gap: 20px;
-}
-#main-nav li{
+    gap: 2rem;
     list-style: none;
-    font-weight: bold;
+    margin: 0;
+    padding: 0;
 }
+
 #main-nav a {
     text-decoration: none;
-    color: var(--white);
-    font-size: 16px;
-    padding: 10px;
+    color: #333;
+    font-weight: 500;
+    position: relative;
+    padding: 0.5rem 0;
     transition: color 0.3s ease;
 }
-#main-nav a:hover {
-    color: var(--hover-color);
+
+#main-nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--logo-green);
+    transition: width 0.3s ease;
+}
+
+#main-nav a:hover::after {
+    width: 100%;
 }
 
 /* Dropdown styling */
@@ -111,96 +193,104 @@ body{
 }
 /* Contact Us Button */
 .contact-us-btn {
-    background-color: transparent;
-    border: 2px solid var(--white);
-    padding: 10px 15px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    background-color: var(--logo-green);
+    color: white !important;
+    padding: 0.5rem 1.5rem !important;
+    border-radius: 25px;
+    transition: all 0.3s ease !important;
 }
 .contact-us-btn:hover {
-    background-color: var(--white);
-    color: var(--logo-green) !important;
-    font-weight: bold;
+    background-color: var(--hover-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 /* For small screens */ 
 @media (max-width: 900px) {
-
-    /* Header adjustments */
-    #main-header {
-        flex-direction: column; 
-        padding: 10px;
-        align-items: flex-start;
-    }   
-    .logo img {
-        width: 120px; 
-    }
-
-    /* Update the navigation menu for small screens */
-
-
-    #main-nav ul {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        margin: 0;
-        padding: 0;
-    }
-
-    /* Show nav links when the menu is open */
-    #main-nav.open ul {
-        display: flex;
-    }
-
-    /* Hamburger icon styling */
     .hamburger-menu {
         display: block;
-        font-size: 24px;
-        cursor: pointer;
-        color: var(--white);
-        margin-left: auto;
-    }
-    
-    #logo-nav-box{
-        display: flex;
-        flex-direction: column;
-    }
-    #main-nav ul {
-        flex-direction: column;
-        width: 100%;
-        margin: 0;
-        padding: 0;
     }
 
-    #main-nav li {
+    #main-nav-container {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        height: 100vh;
+        background-color: white;
+        box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+        transition: right 0.3s ease;
+        z-index: 1001;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #main-nav-container.open {
+        right: 0;
+    }
+
+    #main-nav {
         width: 100%;
-        text-align: center;
-        padding: 15px 0;
-        border-bottom: 1px solid var(--white); 
+        padding: 20px;
+    }
+
+    #main-nav ul {
+        flex-direction: column;
+        gap: 1.5rem;
+        align-items: center;
+        opacity: 0;
+        transform: translateX(20px);
+        transition: all 0.3s ease;
+    }
+
+    #main-nav-container.open #main-nav ul {
+        opacity: 1;
+        transform: translateX(0);
     }
 
     #main-nav a {
-        width: 100%;
-        color: var(--white);
-        text-decoration: none;
-        font-size: 18px;
-        padding: 15px 0;
         display: block;
-        transition: background-color 0.3s ease, color 0.3s ease;
-    }
-
-    #main-nav a:hover {
-        background-color: var(--hover-color);
-        color: var(--black);
-    }
-
-    /* make Contact Us Button in the Nav is stand out */
-    .contact-us-btn {
-        background-color: var(--hover-color);
-        color: var(--black);
-        padding: 10px;
-        border-radius: 5px;
-        margin: 10px 0;
+        padding: 1rem 0;
+        font-size: 1.2em;
         text-align: center;
+        width: 100%;
+    }
+
+    .contact-us-btn {
+        margin-top: 1rem;
+        width: 80%;
+        text-align: center;
+    }
+
+    .logo img {
+        height: 50px;
+    }
+
+    #logo-nav-box {
+        padding: 0.8rem 1.5rem;
+    }
+}
+
+/* For very small screens */
+@media (max-width: 480px) {
+    #main-nav-container {
+        width: 100%;
+    }
+
+    #main-nav a {
+        font-size: 1.1em;
+    }
+
+    .logo img {
+        height: 45px;
+    }
+
+    #logo-nav-box {
+        padding: 0.6rem 1rem;
+    }
+
+    .contact-us-btn {
+        width: 90%;
     }
 }

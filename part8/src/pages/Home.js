@@ -5,11 +5,9 @@ import slide1 from "../images/slideshow/ss1.jpg";
 import slide2 from "../images/slideshow/ss2.jpg";
 import slide3 from "../images/slideshow/ss3.jpg";
 import slide4 from "../images/slideshow/ss4.jpg";
-
-
+import { Link } from "react-router-dom";
 
 const Home = () => {
-
     const slideshowImages = [slide1, slide2, slide3, slide4];
 
     return (
@@ -29,36 +27,19 @@ const Home = () => {
                 </div>
             </section>
 
-            <section className="testimonials-section">
-                <div className="testimonial-box">
-                    <p>“Town & Country Landscaping transformed our yard into a beautiful outdoor oasis. Their attention to detail and professionalism were exceptional!”</p>
-                    <p className="author">John D.</p>
-                </div>
-
-                <div className="testimonial-box">
-                    <p>“We were extremely pleased with the hardscaping work they completed for us. Their team was reliable, efficient, and a pleasure to work with.”</p>
-                    <p className="author">Jane S.</p>
-                </div>
-
-                <div className="testimonial-box">
-                    <p>“Our business property has never looked better. The team at Town & Country consistently provides outstanding service and care."</p>
-                    <p className="author">Michael T.</p>
-                </div>
-            </section>
-
-            <section className="services">
+            <section className="services" style={{ background: 'white' }}>
                 <h2>First-Class Services</h2>
                 <div className="service-boxes">
                     <div className="service-box">
                         <h3>COMMERCIAL</h3>
-                        <p>We offer professional landscaping and maintenance services to keep your commercial property looking pristine year-round. Whether it’s routine care, seasonal plantings, or complete landscape overhauls, we have the expertise to elevate your business’s exterior.</p>
-                        <a href="../services/commercial/index.html" className="btn">Learn More</a>
+                        <p>We offer professional landscaping and maintenance services to keep your commercial property looking pristine year-round. Whether it's routine care, seasonal plantings, or complete landscape overhauls, we have the expertise to elevate your business's exterior.</p>
+                        <Link to="/Commercial" className="btn">Learn More</Link>
                     </div>
                     <div className="service-box">
                         <h3>RESIDENTIAL</h3>
                         <span className="badge">MOST POPULAR</span>
-                        <p>Transform your outdoor space into a beautiful retreat. Our residential services include lawn maintenance, hardscaping, custom landscape designs, and more. We ensure that your home’s landscape is a true reflection of your style and vision.</p>
-                        <a href="../services/residential/index.html" className="btn">Learn More</a>
+                        <p>Transform your outdoor space into a beautiful retreat. Our residential services include lawn maintenance, hardscaping, custom landscape designs, and more. We ensure that your home's landscape is a true reflection of your style and vision.</p>
+                        <Link to="/Residential" className="btn">Learn More</Link>
                     </div>
                 </div>
             </section>

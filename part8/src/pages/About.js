@@ -1,11 +1,38 @@
+import React, { useEffect, useRef } from "react";
 import "../styles/About.css";
 import riverIMG from "../images/river.jpg";
 import signIMG from "../images/T&CSign.jpg";
 import WhyChooseData from "../components/WhyChooseData";
 import WhyChooseUs from "../components/WhyChooseUs";
 
-
 const About = () => {
+    const foundersRef = useRef(null);
+    const missionRef = useRef(null);
+    const whyChooseRef = useRef(null);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        if (foundersRef.current) observer.observe(foundersRef.current);
+        if (missionRef.current) observer.observe(missionRef.current);
+        if (whyChooseRef.current) observer.observe(whyChooseRef.current);
+
+        return () => {
+            if (foundersRef.current) observer.unobserve(foundersRef.current);
+            if (missionRef.current) observer.unobserve(missionRef.current);
+            if (whyChooseRef.current) observer.unobserve(whyChooseRef.current);
+        };
+    }, []);
+
     return (
         <main id="main-content">
             <section className="image-section">
@@ -18,7 +45,7 @@ const About = () => {
                 </div>
             </section>
 
-            <section className="founders-section">
+            <section className="founders-section" ref={foundersRef}>
                 <div className="text-content">
                     <h2>Experts in Landscaping Design</h2>
                     <p className="highlight-text">
@@ -33,7 +60,7 @@ const About = () => {
                 </div>
             </section>
 
-            <section className="mission">
+            <section className="mission" ref={missionRef}>
                 <h2 className="section-title">Our <span className="highlight">Mission</span></h2>
                 <p className="mission-text">
                     At Town & Country Landscaping, we are dedicated to meeting all of your outdoor living needs. From decks to patios to pergolas, no job is too small.
@@ -46,7 +73,7 @@ const About = () => {
                 </p>
             </section>
 
-            <section className="why-choose-us">
+            <section className="why-choose-us" ref={whyChooseRef}>
                 <h2 className="section-title">Why <span className="highlight">Choose Us?</span></h2>
                 <div className="features">
                    {WhyChooseData.map((reason, index) => (

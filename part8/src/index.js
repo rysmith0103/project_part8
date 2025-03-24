@@ -5,8 +5,6 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Residential from "./pages/Residential";
 import Commercial from "./pages/Commercial";
-import Testimonials from "./pages/Testimonials";
-import Blog from "./pages/Blog";
 import Contact from "./pages/Contact";
 
 
@@ -19,8 +17,6 @@ export default function App() {
           <Route path="About" element={<About />} />
           <Route path="Residential" element={<Residential />} />
           <Route path="Commercial" element={<Commercial />} />
-          <Route path="Testimonials" element={<Testimonials />} />
-          <Route path="Blog" element={<Blog />} />
           <Route path="Contact" element={<Contact />} />
         </Route>
       </Routes>
