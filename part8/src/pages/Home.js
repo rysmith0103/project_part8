@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import "../styles/Home.css";
 import Slideshow from "../components/Slideshow";
 import mower from "../images/grassmowing.jpg";
@@ -9,14 +10,46 @@ import { Link } from "react-router-dom";
 
 const Home = () => {
     const slideshowImages = [slide1, slide2, slide3, slide4];
+    const servicesRef = useRef(null);
+    const designSectionRef = useRef(null);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '50px'
+        });
+
+        if (servicesRef.current) {
+            observer.observe(servicesRef.current);
+        }
+
+        if (designSectionRef.current) {
+            observer.observe(designSectionRef.current);
+        }
+
+        return () => {
+            if (servicesRef.current) {
+                observer.unobserve(servicesRef.current);
+            }
+            if (designSectionRef.current) {
+                observer.unobserve(designSectionRef.current);
+            }
+        };
+    }, []);
 
     return (
-        <main id="main-content">
+        <div className="page-wrapper">
             <div className="slideshow-container">
                 <Slideshow images={slideshowImages} />
             </div>
 
-            <section className="design-section">
+            <section className="design-section" ref={designSectionRef}>
                 <div className="text-content">
                     <h2>Providing services since 1976</h2>
                     <p className="highlight-text">LANDSCAPE DESIGN, HARDSCAPING, MAINTENANCE & MORE...</p>
@@ -27,7 +60,7 @@ const Home = () => {
                 </div>
             </section>
 
-            <section className="services" style={{ background: 'white' }}>
+            <section className="services-section" ref={servicesRef}>
                 <h2>First-Class Services</h2>
                 <div className="service-boxes">
                     <div className="service-box">
@@ -43,7 +76,7 @@ const Home = () => {
                     </div>
                 </div>
             </section>
-        </main>
+        </div>
     );
 };
 

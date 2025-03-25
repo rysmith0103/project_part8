@@ -27,7 +27,7 @@ function Footer() {
                         <h3>Contact Us</h3>
                         <ul>
                             <li><a href="https://maps.google.com/?q=495+Mountain+View+Rd+Reading+PA+19607" target="_blank" rel="noopener noreferrer">495 Mountain View Rd, Reading, PA 19607</a></li>
-                            <li><a href="tel:444-444-4444">(444)-444-4444</a></li>
+                            <li><a href="tel:610-777-7476">(610) 777-7476</a></li>
                             <li>Mon-Fri 7:00am - 5:00pm</li>
                         </ul>
                     </div>
